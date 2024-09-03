@@ -1,0 +1,27 @@
+.header {
+  background-color: #f8f9fa;
+}
+
+.logo {
+  flex: 1;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      color: #3f51b5;
+    }
+  }
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
