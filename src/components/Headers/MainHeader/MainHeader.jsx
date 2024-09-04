@@ -1,17 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Box, Badge } from "@mui/material";
+import { AppBar, Toolbar, IconButton, Box, Badge, Button } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import styles from "./Header.module.scss";
+import logo from "../../../assets/svg/logo-main-comfy.svg";
+import { Phone } from "@mui/icons-material";
 
 const MainHeader = () => {
   return (
-    <AppBar position="static" >
+    <AppBar position="static">
       <Toolbar>
         <Box sx={{ flexGrow: 1 }}>
           <Link to="/">
-            <img src="../../../img/svg/logo-main-comfy.svg" alt="Comfy"/>
+            <img src={logo} alt="Comfy" />
           </Link>
+        </Box>
+        <Box>
+          <Button>Акції</Button>
+          <Button>Подарункові карти</Button>
+          <Button>Магазини</Button>
+          <Button>Ще</Button>
+          <Button>
+            <Phone />
+            Допомога
+          </Button>
         </Box>
         <Box>
           <IconButton component={Link} to="cart" color="inherit">
