@@ -1,8 +1,38 @@
-# React + Vite
+API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://fakestoreapi.com/docs
+https://novapost.com/en-ro/for-business/api/
+https://api.novapost.pl/developers/index.html#overview
+https://developers.novaposhta.ua/
+https://www.postman.com/
+Розробити базову версію інтернет-магазину, що включає сторінку каталогу, сторінку товару, корзину та оформлення замовлення.
 
-Currently, two official plugins are available:
+Функціональні вимоги
+Сторінка каталогу
+Відображення списку товарів.
+Можливість фільтрації товарів за категоріями, ціною.
+Пошук товарів за ключовими словами.
+Пагінація для великої кількості товарів.
+Сторінка товару
+Відображення детальної інформації про товар: назва, опис, ціна, зображення, наявність на складі.
+Можливість додавання товару в корзину.
+Можливість вибору кількості товару для додавання в корзину.
+Можливість перегляду схожих товарів.
+Корзина
+Відображення доданих товарів з можливістю редагування кількості або видалення товарів.
+Відображення загальної вартості замовлення.
+Можливість переходу до оформлення замовлення.
+Оформлення замовлення
+Форма для введення особистих даних (ім'я, прізвище, контактний телефон, email).
+Форма для введення адреси доставки.
+Вибір способу доставки.
+Вибір способу оплати.
+відправка повідомлення про успішне оформлення замовлення.
+Нефункціональні вимоги
+Інтерфейс користувача
+Інтуїтивно зрозумілий і зручний інтерфейс.
+Адаптивний дизайн для коректного відображення на різних пристроях (мобільні телефони, планшети, десктопи).
+Стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+HTML, CSS, SCSS, npm, JS
+React, Redux, RTKQuery, MUI, React Router, PropTypes, lodash, classnames
