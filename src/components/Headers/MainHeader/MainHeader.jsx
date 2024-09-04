@@ -2,23 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Box, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styles from "./Header.module.scss";
-import Logo from "./Logo";
 
 const MainHeader = () => {
   return (
-    <AppBar position="static" className={styles.header}>
+    <AppBar position="static" >
       <Toolbar>
-        <Box className={styles.logo}>
-          <Logo />
-        </Box>
-        <Box className={styles.nav} sx={{ flexGrow: 1 }}>
-          <Link to="/" className={styles.link}>
-            Home
+        <Box sx={{ flexGrow: 1 }}>
+          <Link to="/">
+            <img src="../../../img/svg/logo-main-comfy.svg" alt="Comfy"/>
           </Link>
         </Box>
-        <Box className={styles.userActions}>
+        <Box>
           <IconButton component={Link} to="cart" color="inherit">
             <Badge badgeContent={4} color="secondary">
               <ShoppingCartIcon />
