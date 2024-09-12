@@ -1,38 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Box, Badge, Button } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Box,
+  Badge,
+  Button,
+  Container,
+} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../../../assets/svg/logo-main-comfy.svg";
 import { Phone } from "@mui/icons-material";
+import CityDropdown from "../../UI/cityDropdown";
+import { styles } from "./styles.js";
 
 const MainHeader = () => {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Box sx={{ flexGrow: 1 }}>
-          <Link to="/">
-            <img src={logo} alt="Comfy" />
-          </Link>
-        </Box>
-        <Box>
-          <Button>Акції</Button>
-          <Button>Подарункові карти</Button>
-          <Button>Магазини</Button>
-          <Button>Ще</Button>
-          <Button>
-            <Phone />
-            Допомога
-          </Button>
-        </Box>
-        <Box>
-          <IconButton component={Link} to="cart" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <ShoppingCartIcon />
-            </Badge>
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+    <Container maxWidth="xl">
+      <AppBar sx={styles.appBar}>
+        <Toolbar sx={styles.toolbar}>
+          <Box sx={styles.logoBox}>
+            <Link to="/">
+              <img src={logo} alt="Comfy" style={styles.logo} />
+            </Link>
+          </Box>
+          <Box>
+            <CityDropdown sx={styles.cityDropdown} />
+          </Box>
+          <Box sx={styles.buttonBox}>
+            <Button sx={styles.buttonAccent} variant="contained">
+              Акції
+            </Button>
+            <Button sx={styles.button}>Подарункові карти</Button>
+            <Button sx={styles.button}>Магазини</Button>
+            <Button sx={styles.button}>Ще</Button>
+            <Button sx={styles.buttonHelp}>
+              <Phone />
+              Допомога
+            </Button>
+            <Button sx={styles.buttonLangAccent}>Укр</Button>
+            <Button sx={styles.buttonLang}>Рус</Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Container>
   );
 };
 
