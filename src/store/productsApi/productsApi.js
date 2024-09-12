@@ -30,11 +30,11 @@ export const productsApi = createApi({
   }),
 });
 export const {
-  getProducts,
-  getProductById,
-  getAllCategories,
-  getAllProductsByCategory,
-  getCategoryById,
-  getAllUsers,
-  getUserById,
+  useGetProductsQuery,
+  useGetProductByIdQuery,
+  useGetAllCategoriesQuery,
+  useGetAllProductsByCategoryQuery,
+  useGetCategoryByIdQuery,
+  useGetAllUsersQuery,
+  useGetUserByIdQuery,
 } = productsApi;
