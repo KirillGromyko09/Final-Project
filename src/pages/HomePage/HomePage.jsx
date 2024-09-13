@@ -1,13 +1,18 @@
 import React from "react";
 import MainHeader from "../../components/Headers/MainHeader";
-import AllCategories from "../../components/allCategories";
+import BottomHeader from "../../components/Headers/BottomHeader";
+import { Box, Container } from "@mui/material";
 
 const HomePage = () => {
   return (
-    <div>
-      <MainHeader />
-        <AllCategories />
-    </div>
+    <Container>
+      <Box>
+        <MainHeader />
+      </Box>
+      <Box>
+        <BottomHeader />
+      </Box>
+    </Container>
   );
 };
 

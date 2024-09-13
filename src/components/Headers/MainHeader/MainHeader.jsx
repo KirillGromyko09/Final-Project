@@ -1,15 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-  Badge,
-  Button,
-  Container,
-} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { AppBar, Toolbar, Box, Button, Container } from "@mui/material";
 import logo from "../../../assets/svg/logo-main-comfy.svg";
 import { Phone } from "@mui/icons-material";
 import CityDropdown from "../../UI/cityDropdown";

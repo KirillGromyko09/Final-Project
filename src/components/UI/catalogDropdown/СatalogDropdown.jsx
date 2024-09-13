@@ -1,67 +1,62 @@
-import React, { useState } from "react";
-import { Box, Button, CircularProgress, Menu, MenuItem } from "@mui/material";
-import { styles } from "./styles.js";
-import { useNavigate } from "react-router-dom";
-import { KeyboardArrowDownSharp, ViewList } from "@mui/icons-material";
-import { getAllCategories } from "../../../store/productsApi/productsApi.js";
+import React, { useEffect, useState } from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
+import styles from "./styles";
+import { useGetAllCategoriesQuery } from "../../../store/productsApi/productsApi.js";
 
-const CatalogDropdown = ({ onSelectCategory }) => {
-  const { data: categories = [], error, isLoading } = getAllCategories();
+const CatalogDropdown = () => {
+  const { data: categories, error, isLoading } = useGetAllCategoriesQuery();
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
-  const navigate = useNavigate();
 
-  const handleMouseEnter = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  useEffect(() => {
+    if (categories && categories.length > 0) {
+      setSelectedCategory(categories[0]);
+    }
+  }, [categories]);
 
-  const handleMouseLeave = () => {
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
     setAnchorEl(null);
   };
 
-  const handleSelectCategory = (category) => {
-    navigate(`/category/${category}`);
-    handleMouseLeave();
+  const handleButtonClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  if (isLoading) return <CircularProgress />;
-  if (error) return <p>Error loading categories</p>;
+  if (isLoading) return <p>Loading categories...</p>;
+  if (error) return <p>Error loading categories: {error.message}</p>;
 
   return (
-    <Box
-      style={styles.dropdownContainer}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div style={styles.dropdownContainer}>
       <Button
-        aria-controls="categories-menu"
+        aria-controls="simple-menu"
         aria-haspopup="true"
-        sx={styles.button}
+        onClick={handleButtonClick}
+        style={styles.dropdownButton}
       >
-        <ViewList />
-        Каталог товарів
-        <KeyboardArrowDownSharp sx={styles.arrowIcon} />
+        {selectedCategory || "Select Category"}
       </Button>
       <Menu
-        id="categories-menu"
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleMouseLeave}
-        MenuListProps={{ onMouseLeave: handleMouseLeave }}
-        sx={styles.menu}
+        onClose={() => setAnchorEl(null)}
+        style={styles.menu}
       >
-        {Array.isArray(categories) &&
-          categories.map((category, index) => (
-            <MenuItem
-              key={index}
-              onClick={() => handleSelectCategory(category)}
-              sx={styles.menuItem}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </MenuItem>
-          ))}
+        {categories.map((category) => (
+          <MenuItem
+            key={category}
+            selected={category === selectedCategory}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category}
+          </MenuItem>
+        ))}
       </Menu>
-    </Box>
+    </div>
   );
 };
 
