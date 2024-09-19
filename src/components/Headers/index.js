@@ -1,9 +1,9 @@
 import MainHeader from "./MainHeader";
-import CartPageHeader from "./CartPageHeader";
+import CartHeader from "./CartHeader";
 import BottomHeader from "./BottomHeader";
 
 export default {
   MainHeader,
-  CartPageHeader,
+  CartPageHeader: CartHeader,
   BottomHeader,
 };

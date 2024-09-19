@@ -1,18 +1,20 @@
 import React from "react";
-import MainHeader from "../../components/Headers/MainHeader";
-import BottomHeader from "../../components/Headers/BottomHeader";
 import { Box, Container } from "@mui/material";
+import BaseTemplate from "../../templates/BaseTemplate";
 
 const HomePage = () => {
   return (
-    <Container>
-      <Box>
-        <MainHeader />
-      </Box>
-      <Box>
-        <BottomHeader />
-      </Box>
-    </Container>
+    <BaseTemplate
+      className="home-page"
+      showMainHeader={true}
+      showCartHeader={false}
+      showBottomHeader={true}
+      showTopFooter={true}
+      showMainFooter={true}
+      showBottomFooter={true}
+    >
+      <Container></Container>
+    </BaseTemplate>
   );
 };
 
