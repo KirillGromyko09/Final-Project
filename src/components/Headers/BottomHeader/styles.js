@@ -1,9 +1,8 @@
 export const styles = {
   appBar: {
     position: "static",
-    backgroundColor: "#4caf50",
+    backgroundColor: "#11ac11",
     boxShadow: "none",
-    zIndex: 1100,
     transition: "position 0.3s ease",
   },
   toolbar: {

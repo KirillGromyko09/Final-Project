@@ -14,8 +14,12 @@ const BottomHeader = () => {
       }}
     >
       <Toolbar>
-        <Box>{<CatalogDropdown />}</Box>
+        <Box>
+          <CatalogDropdown />
+        </Box>
       </Toolbar>
+
+      <SearchBar />
     </AppBar>
   );
 };
