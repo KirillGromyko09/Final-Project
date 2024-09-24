@@ -1,11 +1,22 @@
 export class StorageService {
-  constructor(useSession = false) {
-    this.storage = useSession ? sessionStorage : localStorage;
+  static storageTypes = Object.freeze({
+    session: "session",
+    local: "local",
+  });
+  #storage = null;
+  #key = null;
+
+  constructor(storageType,key) {
+    if (storageType === StorageService.storageTypes.local)
+      this.#storage = localStorage;
+    if (storageType === StorageService.storageTypes.session)
+      this.#storage = sessionStorage;
+    this.#key = key;
   }
 
   getUserData() {
     try {
-      const userData = this.storage.getItem("userData");
+      const userData = this.#storage.getItem("userData");
       return userData ? JSON.parse(userData) : null;
     } catch (error) {
       console.error("Помилка при отриманні даних із storage:", error);
@@ -15,7 +26,7 @@ export class StorageService {
 
   saveUserData(userData) {
     try {
-      this.storage.setItem("userData", JSON.stringify(userData));
+      this.#storage.setItem("userData", JSON.stringify(userData));
     } catch (error) {
       console.error("Помилка при збереженні даних у storage:", error);
     }
@@ -23,7 +34,7 @@ export class StorageService {
 
   getCartItems() {
     try {
-      const items = this.storage.getItem("cartItems");
+      const items = this.#storage.getItem("cartItems");
       return items ? JSON.parse(items) : [];
     } catch (error) {
       console.error("Помилка при отриманні даних із storage:", error);
@@ -33,13 +44,16 @@ export class StorageService {
 
   saveCartItems(items) {
     try {
-      this.storage.setItem("cartItems", JSON.stringify(items));
+      this.#storage.setItem("cartItems", JSON.stringify(items));
     } catch (error) {
       console.error("Помилка при збереженні даних у storage:", error);
     }
   }
 
-  setUseSessionStorage(useSession) {
-    this.storage = useSession ? sessionStorage : localStorage;
-  }
 }
+const storageService = new StorageService(
+    StorageService.storageTypes.local,
+    "local",
+);
+
+export default storageService;
