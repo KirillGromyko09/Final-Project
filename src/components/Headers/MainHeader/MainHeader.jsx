@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Box, Button, Container } from "@mui/material";
 import logo from "../../../assets/svg/logo-main-comfy.svg";
 import { Phone } from "@mui/icons-material";
-import CityDropdown from "../../UI/cityDropdown";
+import CityDropdown from "../../UI/CityDropdown";
 import { styles } from "./styles.js";
 
 const MainHeader = () => {
