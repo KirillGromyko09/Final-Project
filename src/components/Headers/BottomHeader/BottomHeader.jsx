@@ -36,7 +36,7 @@ const BottomHeader = () => {
   }, [dispatch]);
 
   const handleCartClick = () => {
-    navigate("/shopping-cart");
+    navigate("cart");
   };
 
   const handleFavoriteClick = () => {

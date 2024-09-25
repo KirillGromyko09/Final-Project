@@ -1,77 +1,128 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import { styles } from "./styles.js";
+import { Search } from "@mui/icons-material";
+import { useEffect, useRef, useState } from "react";
+import { useGetProductsQuery } from "../../../store/productsApi/productsApi.js";
+import { useNavigate } from "react-router-dom";
+import {
+  Avatar,
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Paper,
+} from "@mui/material";
 import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+  const { data: products } = useGetProductsQuery();
+  const searchRef = useRef(null);
+  const navigate = useNavigate();
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
+  useEffect(() => {
+    if (searchTerm && products) {
+      const results = products.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+      setFilteredProducts(results);
+      setIsDropdownOpen(true);
+    } else {
+      setFilteredProducts([]);
+      setIsDropdownOpen(false);
+    }
+  }, [searchTerm, products]);
 
-export default function PrimarySearchAppBar() {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+    setSearchTerm("");
+    setFilteredProducts([]);
+    setIsDropdownOpen(false);
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
+    <Box ref={searchRef} style={styles.searchBar}>
+      <InputBase
+        placeholder="Пошук товарів"
+        value={searchTerm}
+        onChange={handleInputChange}
+        sx={styles.inputBase}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton sx={styles.iconButton}>
+              <Search />
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+      {isDropdownOpen && filteredProducts.length > 0 && (
+        <Paper sx={styles.resultList}>
+          <List>
+            {filteredProducts.map((product) => (
+              <ListItem
+                button
+                key={product.id}
+                onClick={() => handleProductClick(product.id)}
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    src={product.image}
+                    alt={product.title}
+                    variant="square"
+                    sx={styles.avatar}
+                  />
+                </ListItemAvatar>
+                <ListItemText primary={product.title} />
+              </ListItem>
+            ))}
+          </List>
+        </Paper>
+      )}
     </Box>
   );
-}
+};
+export default SearchBar;
+
+// export default function PrimarySearchAppBar() {
+//   return (
+//     <Box style={styles.searchContainer}>
+//       <AppBar position="static">
+//         <Toolbar>
+//           <Search>
+//             <SearchIconWrapper>
+//               <SearchIcon />
+//             </SearchIconWrapper>
+//             <StyledInputBase
+//               placeholder="Search…"
+//               inputProps={{ "aria-label": "search" }}
+//             />
+//           </Search>
+//         </Toolbar>
+//       </AppBar>
+//     </Box>
+//   );
+// }

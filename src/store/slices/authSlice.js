@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Cookies from "js-cookies";
+import Cookies from "js-cookie";
 
 const initialState = {
   isAuthenticated: false,
@@ -35,7 +35,7 @@ const authSlice = createSlice({
       Cookies.remove("user");
     },
     loadUserFromCookies(state) {
-      const user = Cookies.get(user);
+      const user = Cookies.get("user");
       if (user) {
         state.isAuthenticated = true;
         state.user = JSON.parse(user);

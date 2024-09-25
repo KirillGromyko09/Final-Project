@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import BaseTemplate from "../../templates/BaseTemplate";
+import BannersCarousel from "../../components/UI/BannersCarousel";
 
 const HomePage = () => {
   return (
@@ -13,7 +14,9 @@ const HomePage = () => {
       showMainFooter={true}
       showBottomFooter={true}
     >
-      <Container></Container>
+      <Container>
+        <BannersCarousel />
+      </Container>
     </BaseTemplate>
   );
 };
