@@ -182,10 +182,6 @@ const ProductDetail = ({
           />
         )}
       </Box>
-      {/*<Box sx={styles.viewedProductsContainer}>*/}
-      {/*  <Typography variant="h5">Переглянуті товари</Typography>*/}
-      {/*  <ViewedProductsList />*/}
-      {/*</Box>*/}
       <Snackbar
         open={showSnackbar}
         autoHideDuration={3000}
