@@ -108,7 +108,10 @@ const BottomHeader = () => {
               </Badge>
             </IconButton>
             <Typography variant="h6" component="div" sx={styles.amountText}>
-              {finalAmount.toFixed(2)} ₴
+              {finalAmount !== null && finalAmount !== undefined
+                ? finalAmount.toFixed(2)
+                : "0.00"}{" "}
+              ₴
             </Typography>
           </Box>
         </Toolbar>

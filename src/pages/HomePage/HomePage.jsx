@@ -2,6 +2,8 @@ import React from "react";
 import { Container } from "@mui/material";
 import BaseTemplate from "../../templates/BaseTemplate";
 import BannersCarousel from "../../components/UI/BannersCarousel";
+import CategoriesList from "../../components/Categories/CategoriesList";
+import ProductList from "../../components/Products/ProductsList/index.js";
 
 const HomePage = () => {
   return (
@@ -16,6 +18,8 @@ const HomePage = () => {
     >
       <Container>
         <BannersCarousel />
+        <CategoriesList />
+        <ProductList />
       </Container>
     </BaseTemplate>
   );

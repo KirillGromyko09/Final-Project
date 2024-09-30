@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import CartPage from "../pages/CartPage";
 import ProductPage from "../pages/ProductPage";
 import CheckoutPage from "../pages/CheckoutPage";
+import CategoryPage from "../pages/CategoryPage";
 
 const routerObjects = [
   {
@@ -24,6 +25,11 @@ const routerObjects = [
     id: 4,
     path: routeNames.CheckoutPage,
     element: CheckoutPage,
+  },
+  {
+    id: 5,
+    path: routeNames.CategoryPage,
+    element: CategoryPage,
   },
 ];
 export default routerObjects;

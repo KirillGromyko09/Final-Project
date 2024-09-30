@@ -4,11 +4,12 @@ export const styles = {
     alignItems: "center",
     justifyContent: "center",
     position: "relative",
+    zIndex: 2,
   },
   inputBase: {
     flex: 1,
     padding: "5px 10px",
-    border: "1px solid #ccc",
+    border: "2px solid #ccc",
     borderRadius: "4px",
     backgroundColor: "#FFFFFF",
     minWidth: "550px",
@@ -23,5 +24,8 @@ export const styles = {
     right: 0,
     maxHeight: "200px",
     overflowY: "auto",
+    backgroundColor: "#fff",
+    border: "2px solid #ccc",
+    borderRadius: "4px",
   },
 };

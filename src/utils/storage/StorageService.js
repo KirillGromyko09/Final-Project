@@ -6,7 +6,7 @@ export class StorageService {
   #storage = null;
   #key = null;
 
-  constructor(storageType,key) {
+  constructor(storageType, key) {
     if (storageType === StorageService.storageTypes.local)
       this.#storage = localStorage;
     if (storageType === StorageService.storageTypes.session)
@@ -31,6 +31,13 @@ export class StorageService {
       console.error("Помилка при збереженні даних у storage:", error);
     }
   }
+  saveUserEmail(userEmail) {
+    try {
+      this.#storage.setItem("userEmail", JSON.stringify(userEmail));
+    } catch (error) {
+      console.error("Помилка при збереженні даних у storage:", error);
+    }
+  }
 
   getCartItems() {
     try {
@@ -49,11 +56,10 @@ export class StorageService {
       console.error("Помилка при збереженні даних у storage:", error);
     }
   }
-
 }
 const storageService = new StorageService(
-    StorageService.storageTypes.local,
-    "local",
+  StorageService.storageTypes.local,
+  "local",
 );
 
 export default storageService;
