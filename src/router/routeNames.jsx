@@ -4,5 +4,7 @@ const routeNames = Object.freeze({
   ProductPage: "/product/:id",
   CheckoutPage: "/checkout",
   CategoryPage: "/category/:categoryName",
+  ProfilePage: "/profile",
+  FavProductsPage: "/fav-products",
 });
 export default routeNames;

@@ -4,6 +4,8 @@ import CartPage from "../pages/CartPage";
 import ProductPage from "../pages/ProductPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import CategoryPage from "../pages/CategoryPage";
+import ProfilePage from "../pages/ProfilePage/index.js";
+import FavProductsPage from "../pages/FavProductsPage/index.js";
 
 const routerObjects = [
   {
@@ -30,6 +32,16 @@ const routerObjects = [
     id: 5,
     path: routeNames.CategoryPage,
     element: CategoryPage,
+  },
+  {
+    id: 6,
+    path: routeNames.ProfilePage,
+    element: ProfilePage,
+  },
+  {
+    id: 7,
+    path: routeNames.FavProductsPage,
+    element: FavProductsPage,
   },
 ];
 export default routerObjects;
