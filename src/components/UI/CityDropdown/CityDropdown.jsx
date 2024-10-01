@@ -21,6 +21,9 @@ const CityDropdown = () => {
         value={selectedCity}
         label="Місто"
         onChange={handleChange}
+        MenuProps={{
+          disableScrollLock: true,
+        }}
         sx={styles.select}
       >
         {cities.map((city, index) => (

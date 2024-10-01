@@ -55,6 +55,7 @@ const CatalogDropdown = () => {
         open={Boolean(anchorEl)}
         onClose={handleMouseLeave}
         MenuListProps={{ onMouseLeave: handleMouseLeave }}
+        disableScrollLock={true}
         sx={styles.menu}
       >
         {Array.isArray(categories) &&
