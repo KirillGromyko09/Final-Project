@@ -5,6 +5,7 @@ export const styles = {
     justifyContent: "flex-start",
     flexWrap: "wrap",
     gap: "10px",
+    marginBottom: "30px",
   },
   header: {
     paddingTop: "30px",
