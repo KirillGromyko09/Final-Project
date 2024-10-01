@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useFavorites from "../../hooks/useFavorites.js";
@@ -21,9 +21,10 @@ import {
 } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import CartPopup from "../../Cart/CartPopup";
-import { addViewedProduct } from "../../../store/slices/viewedPrSlice.js";
+import { addViewedProduct } from "../../../store/slices/viewedProductsSlice.js";
 import { styles } from "./style.js";
 import useSnackbar from "../../hooks/useCart.js";
+import ViewedProductsList from "../ViewedProducts/ViewedProductsList";
 
 const ProductDetail = ({
   imageUrl,
@@ -37,12 +38,16 @@ const ProductDetail = ({
   discount,
   bonus,
 }) => {
-  const product = {
-    id: code,
-    image: imageUrl,
-    title,
-    price: parseFloat(newPrice),
-  };
+  const product = useMemo(
+    () => ({
+      id: code,
+      image: imageUrl,
+      title,
+      price: parseFloat(newPrice),
+    }),
+    [code, imageUrl, title, newPrice],
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -181,6 +186,10 @@ const ProductDetail = ({
             onClose={handleClosePopup}
           />
         )}
+      </Box>
+      <Box sx={styles.viewedProductsContainer}>
+        <Typography variant="h4">Переглянуті товари</Typography>
+        <ViewedProductsList />
       </Box>
       <Snackbar
         open={showSnackbar}

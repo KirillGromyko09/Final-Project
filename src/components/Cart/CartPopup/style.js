@@ -5,7 +5,7 @@ export const styles = {
     left: "50%",
     transform: "translateX(-50%)",
     width: "800px",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
     padding: "16px",
@@ -58,7 +58,7 @@ export const styles = {
     marginRight: "4px",
   },
   productAvailability: {
-    color: "#4caf50",
+    color: "#11ac11",
   },
   productPrice: {
     flex: "1",
@@ -88,7 +88,7 @@ export const styles = {
     },
   },
   goToCartButton: {
-    backgroundColor: "#4caf50",
+    backgroundColor: "#11ac11",
     color: "#fff",
     textAlign: "center",
     padding: "16px 26px",
@@ -100,8 +100,8 @@ export const styles = {
     },
   },
   makeOrderButton: {
-    color: "#4caf50",
-    borderColor: "#4caf50",
+    color: "#11ac11",
+    borderColor: "#11ac11",
     textAlign: "center",
     padding: "16px 26px",
     marginRight: "5px",

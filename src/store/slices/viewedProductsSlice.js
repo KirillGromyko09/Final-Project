@@ -1,4 +1,3 @@
-import storageService from "../../utils/storage/StorageService.js";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

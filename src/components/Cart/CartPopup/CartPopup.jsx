@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../../store/slices/cartSlice.js";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Close as CloseIcon, CheckSharp } from "@mui/icons-material";
+import { styles } from "./style.js";
+import QuantitySelector from "../../UI/QuantitySelector/index.js";
+import PropTypes from "prop-types";
 
 const CartPopup = ({ product, onClose }) => {
   const [quantity, setQuantity] = useState(1);
@@ -17,7 +20,7 @@ const CartPopup = ({ product, onClose }) => {
   const handleAddToCart = () => {
     dispatch(addItem({ ...product, quantity: quantity - 1 }));
     onClose();
-    navigate("checkout", { state: { product, quantity } });
+    navigate("/checkout", { state: { product, quantity } });
   };
 
   const totalNewPrice = product.newPrice * quantity.toFixed(2);
@@ -95,7 +98,7 @@ const CartPopup = ({ product, onClose }) => {
         <Button
           sx={styles.goToCartButton}
           variant="contained"
-          onClick={handleGoToCart}
+          onClick={handleToCart}
         >
           Перейти до кошика
         </Button>
@@ -111,6 +114,16 @@ const CartPopup = ({ product, onClose }) => {
       </Box>
     </Box>
   );
+};
+CartPopup.propTypes = {
+  product: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    code: PropTypes.number.isRequired,
+    newPrice: PropTypes.number.isRequired,
+    oldPrice: PropTypes.number.isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default CartPopup;
