@@ -42,18 +42,37 @@ export class StorageService {
   getCartItems() {
     try {
       const items = this.#storage.getItem("cartItems");
-      return items ? JSON.parse(items) : [];
+      return items && items !== "" ? JSON.parse(items) : [];
     } catch (error) {
-      console.error("Помилка при отриманні даних із storage:", error);
+      console.error("Помилка при отриманні даних зі storage:", error);
       return [];
     }
   }
-
-  saveCartItems(items) {
+  // saveCartItems(items) {
+  //   try {
+  //     if (typeof items === "object") {
+  //       this.#storage.setItem("cartItems", JSON.stringify(items));
+  //     } else {
+  //       console.error(
+  //         "Некорректные данные для сохранения в localStorage",
+  //         items,
+  //       );
+  //     }
+  //   } catch (error) {
+  //     console.error("Ошибка при сохранении данных в localStorage:", error);
+  //   }
+  // }
+  saveCartItems(key, items) {
     try {
-      this.#storage.setItem("cartItems", JSON.stringify(items));
+      const validItems = items.map((item) => ({
+        ...item,
+        oldPrice: parseFloat(item.oldPrice), // Преобразование строки в число
+        newPrice: parseFloat(item.newPrice), // Преобразование строки в число
+        discount: parseFloat(item.discount), // Преобразование строки в число
+      }));
+      localStorage.setItem(key, JSON.stringify(validItems));
     } catch (error) {
-      console.error("Помилка при збереженні даних у storage:", error);
+      console.error("Ошибка при сохранении данных в localStorage:", error);
     }
   }
 }

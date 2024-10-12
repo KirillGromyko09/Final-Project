@@ -1,9 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import storageService from "../../utils/storage/StorageService.js";
 
 const loadCartFromLS = () => {
-  const savedCart = localStorage.getItem("cartItems");
-  if (savedCart) {
-    return JSON.parse(savedCart);
+  try {
+    const savedCart = storageService.getCartItems("cartItems");
+    if (
+      savedCart &&
+      typeof savedCart === "string" &&
+      savedCart.trim().length > 0
+    ) {
+      const parsedCart = JSON.parse(savedCart);
+      if (typeof parsedCart === "object" && parsedCart !== null) {
+        return {
+          items: Array.isArray(parsedCart) ? parsedCart : [],
+          totalAmount: parsedCart.totalAmount || 0,
+          totalDiscount: parsedCart.totalDiscount || 0,
+          finalAmount: parsedCart.finalAmount || 0,
+          cartCount: parsedCart.cartCount || 0,
+        };
+      }
+    }
+  } catch (error) {
+    console.error("Ошибка при парсинге данных из localStorage:", error);
   }
   return {
     items: [],
@@ -29,7 +47,12 @@ const updateTotals = (state) => {
     0,
   );
 
-  localStorage.setItem("cartItems", JSON.stringify(state));
+  // storageService.saveCartItems(state.items);
+  try {
+    storageService.saveCartItems("cartItems", state);
+  } catch (error) {
+    console.error("Ошибка при сохранении данных в localStorage:", error);
+  }
 };
 const cartSlice = createSlice({
   name: "cart",
@@ -37,6 +60,9 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const item = action.payload;
+      if (!Array.isArray(state.items)) {
+        state.items = [];
+      }
       const existingItem = state.items.find(
         (cartItem) => cartItem.code === item.code,
       );
@@ -80,7 +106,7 @@ const cartSlice = createSlice({
       state.totalDiscount = 0;
       state.finalAmount = 0;
       state.cartCount = 0;
-      localStorage.setItem("cartItems", JSON.stringify(state));
+      storageService.saveCartItems(state.items);
     },
   },
 });

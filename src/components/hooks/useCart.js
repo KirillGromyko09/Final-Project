@@ -3,7 +3,7 @@ import { addItem } from "../../store/slices/cartSlice.js";
 
 const useCart = (product) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state) => state.cart.items) || [];
 
   const isInCart = product
     ? cartItems.some((item) => item.code === product.code)
