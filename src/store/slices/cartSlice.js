@@ -49,7 +49,7 @@ const updateTotals = (state) => {
 
   // storageService.saveCartItems(state.items);
   try {
-    storageService.saveCartItems("cartItems", state);
+    storageService.saveCartItems("cartItems", JSON.stringify(state));
   } catch (error) {
     console.error("Ошибка при сохранении данных в localStorage:", error);
   }

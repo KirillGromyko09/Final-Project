@@ -1,35 +1,27 @@
 export const styles = {
-  container: {
-    padding: "16px",
-    maxWidth: "800px",
-    margin: "0 auto",
-  },
-  cartItem: {
+  cartContainer: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    padding: "16px",
-    borderBottom: "1px solid #ccc",
+    alignItems: "flex-start",
+    padding: "20px",
+    gap: "20px",
   },
-  cartItemDetails: {
+  emptyCart: {
+    textAlign: "center",
+    margin: "200px auto",
+  },
+  headerAuth: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  cartItemActions: {
-    display: "flex",
-    alignItems: "center",
+  text: {
+    fontSize: "24px",
+    fontWeight: "bold",
   },
-  removeButton: {
-    marginLeft: "8px",
-  },
-  totals: {
-    marginTop: "16px",
-    textAlign: "right",
-  },
-  clearButton: {
-    marginTop: "16px",
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
+  itemListContainer: {
+    flex: "3 1 auto",
+    overflowY: "auto",
+    maxHeight: "80vh",
   },
 };

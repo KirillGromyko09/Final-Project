@@ -66,9 +66,9 @@ export class StorageService {
     try {
       const validItems = items.map((item) => ({
         ...item,
-        oldPrice: parseFloat(item.oldPrice), // Преобразование строки в число
-        newPrice: parseFloat(item.newPrice), // Преобразование строки в число
-        discount: parseFloat(item.discount), // Преобразование строки в число
+        oldPrice: parseFloat(item.oldPrice),
+        newPrice: parseFloat(item.newPrice),
+        discount: parseFloat(item.discount),
       }));
       localStorage.setItem(key, JSON.stringify(validItems));
     } catch (error) {
