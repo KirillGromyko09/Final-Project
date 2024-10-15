@@ -2,36 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import storageService from "../../utils/storage/StorageService.js";
 
 const loadCartFromLS = () => {
-  try {
-    const savedCart = storageService.getCartItems("cartItems");
-    if (
-      savedCart &&
-      typeof savedCart === "string" &&
-      savedCart.trim().length > 0
-    ) {
-      const parsedCart = JSON.parse(savedCart);
-      if (typeof parsedCart === "object" && parsedCart !== null) {
-        return {
-          items: Array.isArray(parsedCart) ? parsedCart : [],
-          totalAmount: parsedCart.totalAmount || 0,
-          totalDiscount: parsedCart.totalDiscount || 0,
-          finalAmount: parsedCart.finalAmount || 0,
-          cartCount: parsedCart.cartCount || 0,
-        };
-      }
-    }
-  } catch (error) {
-    console.error("Ошибка при парсинге данных из localStorage:", error);
+  const savedCart = localStorage.getItem('cartItems');
+  if (savedCart) {
+    return JSON.parse(savedCart);
   }
-  return {
-    items: [],
-    totalAmount: 0,
-    totalDiscount: 0,
-    finalAmount: 0,
-    cartCount: 0,
-  };
+  return { items: [], totalAmount: 0, totalDiscount: 0, finalAmount: 0, cartCount: 0 };
 };
+
 const initialState = loadCartFromLS();
+
 const updateTotals = (state) => {
   state.totalAmount = state.items.reduce(
     (total, item) => total + item.oldPrice * item.quantity,
@@ -46,10 +25,8 @@ const updateTotals = (state) => {
     (count, item) => count + item.quantity,
     0,
   );
-
-  // storageService.saveCartItems(state.items);
   try {
-    storageService.saveCartItems("cartItems", JSON.stringify(state));
+    localStorage.setItem('cartItems', JSON.stringify(state));
   } catch (error) {
     console.error("Ошибка при сохранении данных в localStorage:", error);
   }
@@ -106,7 +83,7 @@ const cartSlice = createSlice({
       state.totalDiscount = 0;
       state.finalAmount = 0;
       state.cartCount = 0;
-      storageService.saveCartItems(state.items);
+      localStorage.setItem('cartItems', JSON.stringify(state));
     },
   },
 });
