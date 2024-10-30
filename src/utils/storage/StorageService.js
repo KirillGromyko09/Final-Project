@@ -48,20 +48,6 @@ export class StorageService {
       return [];
     }
   }
-  // saveCartItems(items) {
-  //   try {
-  //     if (typeof items === "object") {
-  //       this.#storage.setItem("cartItems", JSON.stringify(items));
-  //     } else {
-  //       console.error(
-  //         "Некорректные данные для сохранения в localStorage",
-  //         items,
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.error("Ошибка при сохранении данных в localStorage:", error);
-  //   }
-  // }
   saveCartItems(key, items) {
     try {
       const validItems = items.map((item) => ({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -182,7 +182,7 @@ ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   ratingCount: PropTypes.number.isRequired,
-  oldPrice: PropTypes.string.isRequired,
+  oldPrice: PropTypes.number.isRequired,
   discount: PropTypes.number.isRequired,
   newPrice: PropTypes.number.isRequired,
   bonus: PropTypes.string.isRequired,

@@ -36,7 +36,7 @@ const ProductPage = () => {
           description={product.description}
           rating={product.rating.rate}
           ratingCount={product.rating.count}
-          oldPrice={(product.price * 1.1).toFixed(2)}
+          oldPrice={parseFloat((product.price * 1.1).toFixed(2))}
           discount={10}
           newPrice={product.price}
           bonus={Math.floor(product.price * 0.1).toFixed(2)}

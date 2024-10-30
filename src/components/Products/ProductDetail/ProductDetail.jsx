@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 import CartPopup from "../../Cart/CartPopup";
 import { addViewedProduct } from "../../../store/slices/viewedProductsSlice.js";
 import { styles } from "./style.js";
-import useSnackbar from "../../hooks/useCart.js";
+import useSnackbar from "../../hooks/useSnackbar.js";
 import ViewedProductsList from "../ViewedProducts/ViewedProductsList";
 
 const ProductDetail = ({
@@ -207,7 +207,7 @@ ProductDetail.propTypes = {
   description: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   ratingCount: PropTypes.number.isRequired,
-  oldPrice: PropTypes.string.isRequired,
+  oldPrice: PropTypes.number.isRequired,
   newPrice: PropTypes.number.isRequired,
   discount: PropTypes.number.isRequired,
   code: PropTypes.number.isRequired,

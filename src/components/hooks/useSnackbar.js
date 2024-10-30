@@ -11,6 +11,7 @@ const useSnackbar = () => {
 
   const handleCloseSnackbar = () => {
     setShowSnackbar(false);
+    setSnackbarMessage("");
   };
 
   return {

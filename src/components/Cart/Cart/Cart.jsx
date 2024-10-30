@@ -17,6 +17,8 @@ const Cart = () => {
     dispatch(loadUserFromCookies());
   }, [dispatch]);
 
+  const validItems = items.filter((item) => item.id);
+
   return (
     <Box>
       <Typography variant="h4" gutterBottom sx={styles.text}>
@@ -30,7 +32,7 @@ const Cart = () => {
         ) : (
           <>
             <Box sx={styles.itemListContainer}>
-              <CartProductsList items={items} />
+              <CartProductsList items={validItems} />
             </Box>
             <Box>
               {isAuthenticated ? (
