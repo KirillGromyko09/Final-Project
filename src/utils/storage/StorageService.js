@@ -42,7 +42,7 @@ export class StorageService {
   getCartItems() {
     try {
       const items = this.#storage.getItem("cartItems");
-      return items && items !== "" ? JSON.parse(items) : [];
+      return items ? JSON.parse(items) : [];
     } catch (error) {
       console.error("Помилка при отриманні даних зі storage:", error);
       return [];
@@ -56,7 +56,7 @@ export class StorageService {
         newPrice: parseFloat(item.newPrice),
         discount: parseFloat(item.discount),
       }));
-      localStorage.setItem(key, JSON.stringify(validItems));
+      this.#storage.setItem("cartItems", JSON.stringify(validItems));
     } catch (error) {
       console.error("Ошибка при сохранении данных в localStorage:", error);
     }

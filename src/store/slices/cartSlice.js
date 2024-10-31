@@ -2,13 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import storageService from "../../utils/storage/StorageService.js";
 
 const loadCartFromLS = () => {
-  const savedCart = storageService.getCartItems("cartItems");
-  try {
-    if (savedCart) {
-      return JSON.parse(savedCart);
-    }
-  } catch (error) {
-    console.error("Помилка при парсингу данних з localStorage:", error);
+  const savedCart = localStorage.getItem("cartItems");
+  if (savedCart) {
+    return JSON.parse(savedCart);
   }
   return {
     items: [],
@@ -42,6 +38,7 @@ const updateTotals = (state) => {
     console.error("Помилка при збереженні данних у localStorage:", error);
   }
 };
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -98,6 +95,7 @@ const cartSlice = createSlice({
     },
   },
 });
+
 export const { addItem, removeItem, deleteItem, deleteAllItems } =
   cartSlice.actions;
 export default cartSlice.reducer;
