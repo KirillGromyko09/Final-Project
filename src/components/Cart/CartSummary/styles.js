@@ -11,14 +11,14 @@ export const styles = {
   checkoutButton: {
     marginTop: "16px",
     marginBottom: "16px",
-    backgroundColor: "#4caf50",
+    backgroundColor: "#11ac11",
     color: "#fff",
     textAlign: "center",
     padding: "16px 26px",
     borderRadius: "4px",
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: "#e25c1d",
+      backgroundColor: "#0e8e10",
     },
   },
   summaryDetails: {
@@ -35,6 +35,7 @@ export const styles = {
     justifyContent: "space-between",
     gap: "8px",
     marginBottom: "32px",
+    padding: "16px",
   },
   divider: {
     backgroundColor: "#000",
@@ -55,5 +56,7 @@ export const styles = {
     justifyContent: "space-between",
     fontSize: "18px",
     fontWeight: "bold",
+    paddingLeft: "16px",
+    paddingRight: "16px",
   },
 };

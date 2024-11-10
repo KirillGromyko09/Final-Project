@@ -29,7 +29,7 @@ export const styles = {
     marginTop: "16px",
   },
   submitButton: {
-    backgroundColor: "#4caf50",
+    backgroundColor: "#11ac11",
     color: "#fff",
     textAlign: "center",
     padding: "16px 26px",

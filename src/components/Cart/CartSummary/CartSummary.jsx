@@ -22,13 +22,6 @@ const CartSummary = ({
 
   return (
     <Box sx={styles.summary}>
-      <Button
-        variant="contained"
-        sx={styles.checkoutButton}
-        onClick={handleCheckout}
-      >
-        Перейти до оформлення
-      </Button>
       <Box sx={styles.summaryDetails}>
         <Box sx={styles.summaryTextContainer}>
           <Box sx={styles.summaryText}>
@@ -56,6 +49,13 @@ const CartSummary = ({
           </Typography>
         </Box>
       </Box>
+      <Button
+          variant="contained"
+          sx={styles.checkoutButton}
+          onClick={handleCheckout}
+      >
+        Перейти до оформлення
+      </Button>
     </Box>
   );
 };

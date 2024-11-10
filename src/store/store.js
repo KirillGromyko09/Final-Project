@@ -4,6 +4,7 @@ import authReducer from "./slices/authSlice.js";
 import cartReducer from "./slices/cartSlice.js";
 import favoritesReducer from "./slices/favoritesSlice.js";
 import viewedProductsReducer from "./slices/viewedProductsSlice";
+import orderReducer from "./slices/orderSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     favorites: favoritesReducer,
     cart: cartReducer,
     viewedProducts: viewedProductsReducer,
+    order:orderReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(productsApi.middleware),

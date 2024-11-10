@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import { Box, Typography, IconButton, Button } from "@mui/material";
 import {
   Delete,
@@ -24,11 +23,15 @@ import {
 import DeleteAllItemsPopup from "../DeleteItemsPopup";
 import { styles } from "./styles";
 
-const CartProductsList = ({ items }) => {
+const ensureNumber = (value) => isNaN(value) ? 0 : Number(value);
+
+const CartProductsList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const favorites = useSelector((state) => state.favorites.items);
+  const items = useSelector((state) => state.cart.items);
+
 
   const handleOpenDeletePopup = () => {
     setShowDeletePopup(true);
@@ -81,12 +84,12 @@ const CartProductsList = ({ items }) => {
         </Button>
       </Box>
       {items.map((item) => {
-        const totalOldPrice = (item.oldPrice * item.quantity).toFixed(2);
-        const totalNewPrice = (item.newPrice * item.quantity).toFixed(2);
+        const totalOldPrice = (ensureNumber(item.oldPrice) * ensureNumber(item.quantity)).toFixed(2);
+        const totalNewPrice = (ensureNumber(item.newPrice) * ensureNumber(item.quantity)).toFixed(2);
         const isFavorite = isItemFavorite(item.code);
 
         return (
-          <Box key={item.id} sx={styles.item}>
+          <Box key={item.code} sx={styles.item}>
             <Box sx={styles.itemDetails}>
               <img
                 src={item.imageUrl}
@@ -165,7 +168,7 @@ const CartProductsList = ({ items }) => {
                     {totalOldPrice} ₴
                   </Typography>
                   <Typography variant="body2" sx={styles.discount}>
-                    -{item.discount}%
+                    -{ensureNumber(item.discount)}%
                   </Typography>
                 </Box>
                 <Box>
@@ -188,19 +191,5 @@ const CartProductsList = ({ items }) => {
   );
 };
 
-CartProductsList.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      code: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      oldPrice: PropTypes.number.isRequired,
-      newPrice: PropTypes.number.isRequired,
-      quantity: PropTypes.number.isRequired,
-      discount: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-};
 
 export default CartProductsList;

@@ -16,6 +16,7 @@ export const styles = {
     justifyContent: "space-between",
   },
   text: {
+    paddingTop: "20px",
     fontSize: "24px",
     fontWeight: "bold",
   },

@@ -2,10 +2,13 @@ import routeNames from "./routeNames.js";
 import HomePage from "../pages/HomePage";
 import CartPage from "../pages/CartPage";
 import ProductPage from "../pages/ProductPage";
-import CheckoutPage from "../pages/CheckoutPage";
+import AddressPage from "../pages/CheckoutPages";
 import CategoryPage from "../pages/CategoryPage";
 import ProfilePage from "../pages/ProfilePage/index.js";
 import FavProductsPage from "../pages/FavProductsPage/index.js";
+import DeliveryPage from "../pages/CheckoutPages/DeliveryPage.jsx";
+import ConfirmationPage from "../pages/CheckoutPages/ConfirmationPage.jsx";
+import PaymentPage from "../pages/CheckoutPages/PaymentPage.jsx";
 
 const routerObjects = [
   {
@@ -26,7 +29,7 @@ const routerObjects = [
   {
     id: 4,
     path: routeNames.CheckoutPage,
-    element: CheckoutPage,
+    element: AddressPage,
   },
   {
     id: 5,
@@ -43,5 +46,25 @@ const routerObjects = [
     path: routeNames.FavProductsPage,
     element: FavProductsPage,
   },
+  {
+    id:8,
+    path: routeNames.DeliveryPage,
+    element: DeliveryPage,
+  },
+  {
+    id:9,
+    path: routeNames.AddressPage,
+    element: AddressPage,
+  },
+  {
+    id:10,
+    path: routeNames.ConfirmationPage,
+    element: ConfirmationPage,
+  },
+  {
+    id:11,
+    path: routeNames.PaymentPage,
+    element: PaymentPage,
+  }
 ];
 export default routerObjects;

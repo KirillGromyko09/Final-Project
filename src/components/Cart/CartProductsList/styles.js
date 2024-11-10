@@ -22,7 +22,7 @@ export const styles = {
     },
   },
   iconHeart: {
-    color: "#e25c1d",
+    color: "#d61111",
   },
   item: {
     display: "flex",
@@ -47,7 +47,7 @@ export const styles = {
     marginRight: "40px",
   },
   itemInfo: {
-    width: "400px",
+    width: "200px",
   },
   icon: {
     color: "#999",
@@ -74,7 +74,7 @@ export const styles = {
     marginRight: "4px",
   },
   productAvailability: {
-    color: "#4caf50",
+    color: "#11ac11",
     fontSize: "14px",
   },
   itemActions: {
@@ -101,7 +101,7 @@ export const styles = {
     marginRight: "8px",
   },
   discount: {
-    color: "#d32f2f",
+    color: "#d61111",
     fontWeight: "bold",
     marginRight: "8px",
   },

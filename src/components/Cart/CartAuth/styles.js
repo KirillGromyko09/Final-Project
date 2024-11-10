@@ -21,7 +21,7 @@ export const styles = {
     backgroundColor: "#e25c1d",
     color: "#fff",
     "&:hover": {
-      backgroundColor: "#4caf50",
+      backgroundColor: "#11ac11",
     },
   },
 };
