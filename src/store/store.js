@@ -5,6 +5,7 @@ import cartReducer from "./slices/cartSlice.js";
 import favoritesReducer from "./slices/favoritesSlice.js";
 import viewedProductsReducer from "./slices/viewedProductsSlice";
 import orderReducer from "./slices/orderSlice.js";
+import { novaPoshtaApi } from "./slices/novaPoshtaApi.js";
 
 export const store = configureStore({
   reducer: {
@@ -13,10 +14,14 @@ export const store = configureStore({
     favorites: favoritesReducer,
     cart: cartReducer,
     viewedProducts: viewedProductsReducer,
-    order:orderReducer,
+    order: orderReducer,
+    [novaPoshtaApi.reducerPath]: novaPoshtaApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productsApi.middleware),
+    getDefaultMiddleware().concat(
+      productsApi.middleware,
+      novaPoshtaApi.middleware,
+    ),
 });
 
 export default store;

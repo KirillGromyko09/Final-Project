@@ -1,10 +1,12 @@
-import BaseTemplate from "../../templates/BaseTemplate";
+import React from "react";
+import CheckoutForm from "../../components/Checkout/CheckoutForm";
 import { Container } from "@mui/material";
-import Payment from "../../components/Checkout/Payment";
+import BaseTemplate from "../../templates/BaseTemplate/index.js";
 
-const PaymentPage = () => {
+const CheckoutPage = () => {
   return (
     <BaseTemplate
+      className="home-page"
       showMainHeader={true}
       showCartHeader={false}
       showBottomHeader={true}
@@ -13,10 +15,10 @@ const PaymentPage = () => {
       showBottomFooter={true}
     >
       <Container>
-        <Payment />
+        <CheckoutForm />
       </Container>
     </BaseTemplate>
   );
 };
 
-export default PaymentPage;
+export default CheckoutPage;

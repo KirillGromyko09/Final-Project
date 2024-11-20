@@ -9,6 +9,7 @@ import FavProductsPage from "../pages/FavProductsPage/index.js";
 import DeliveryPage from "../pages/CheckoutPages/DeliveryPage.jsx";
 import ConfirmationPage from "../pages/CheckoutPages/ConfirmationPage.jsx";
 import PaymentPage from "../pages/CheckoutPages/PaymentPage.jsx";
+import CheckoutPage from "../pages/CheckoutPages/CheckoutPage.jsx";
 
 const routerObjects = [
   {
@@ -29,7 +30,7 @@ const routerObjects = [
   {
     id: 4,
     path: routeNames.CheckoutPage,
-    element: AddressPage,
+    element: CheckoutPage,
   },
   {
     id: 5,
@@ -47,24 +48,24 @@ const routerObjects = [
     element: FavProductsPage,
   },
   {
-    id:8,
+    id: 8,
     path: routeNames.DeliveryPage,
     element: DeliveryPage,
   },
   {
-    id:9,
+    id: 9,
     path: routeNames.AddressPage,
     element: AddressPage,
   },
   {
-    id:10,
+    id: 10,
     path: routeNames.ConfirmationPage,
     element: ConfirmationPage,
   },
   {
-    id:11,
+    id: 11,
     path: routeNames.PaymentPage,
     element: PaymentPage,
-  }
+  },
 ];
 export default routerObjects;
