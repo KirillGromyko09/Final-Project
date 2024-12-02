@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "472a11eaf94d0363a7a1d1779069b782";
+const API_KEY = "fd361fe28bb4e0e07469553b61b59797";
 
 export const novaPoshtaApi = createApi({
   reducerPath: "novaPoshtaApi",
@@ -9,16 +9,14 @@ export const novaPoshtaApi = createApi({
   }),
   endpoints: (builder) => ({
     getCities: builder.query({
-      query: (search) => ({
+      query: (search = "") => ({
         url: "",
         method: "POST",
         body: {
           apiKey: API_KEY,
           modelName: "Address",
           calledMethod: "getCities",
-          methodProperties: {
-            FindByString: search,
-          },
+          methodProperties: { FindByString: search, Limit: 50 },
         },
       }),
       transformResponse: (response) => response.data,
@@ -31,9 +29,7 @@ export const novaPoshtaApi = createApi({
           apiKey: API_KEY,
           modelName: "AddressGeneral",
           calledMethod: "getWarehouses",
-          methodProperties: {
-            CityRef: cityRef,
-          },
+          methodProperties: { CityRef: cityRef },
         },
       }),
       transformResponse: (response) => response.data,

@@ -34,5 +34,8 @@ export default [
         { allowConstantExport: true },
       ],
     },
+    ignores: [
+        'node_modules',
+    ]
   },
 ]

@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { Box, Typography } from "@mui/material";
 import "slick-carousel/slick/slick.css";

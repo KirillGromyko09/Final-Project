@@ -2,14 +2,11 @@ import routeNames from "./routeNames.js";
 import HomePage from "../pages/HomePage";
 import CartPage from "../pages/CartPage";
 import ProductPage from "../pages/ProductPage";
-import AddressPage from "../pages/CheckoutPages";
 import CategoryPage from "../pages/CategoryPage";
-import ProfilePage from "../pages/ProfilePage/index.js";
-import FavProductsPage from "../pages/FavProductsPage/index.js";
-import DeliveryPage from "../pages/CheckoutPages/DeliveryPage.jsx";
-import ConfirmationPage from "../pages/CheckoutPages/ConfirmationPage.jsx";
-import PaymentPage from "../pages/CheckoutPages/PaymentPage.jsx";
-import CheckoutPage from "../pages/CheckoutPages/CheckoutPage.jsx";
+import ProfilePage from "../pages/ProfilePage";
+import FavProductsPage from "../pages/FavProductsPage";
+import ConfirmationPage from "../pages/CheckoutPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 const routerObjects = [
   {
@@ -49,23 +46,8 @@ const routerObjects = [
   },
   {
     id: 8,
-    path: routeNames.DeliveryPage,
-    element: DeliveryPage,
-  },
-  {
-    id: 9,
-    path: routeNames.AddressPage,
-    element: AddressPage,
-  },
-  {
-    id: 10,
     path: routeNames.ConfirmationPage,
     element: ConfirmationPage,
-  },
-  {
-    id: 11,
-    path: routeNames.PaymentPage,
-    element: PaymentPage,
   },
 ];
 export default routerObjects;

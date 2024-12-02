@@ -23,7 +23,7 @@ import {
 import DeleteAllItemsPopup from "../DeleteItemsPopup";
 import { styles } from "./styles";
 
-const ensureNumber = (value) => isNaN(value) ? 0 : Number(value);
+const ensureNumber = (value) => (isNaN(value) ? 0 : Number(value));
 
 const CartProductsList = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,6 @@ const CartProductsList = () => {
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const favorites = useSelector((state) => state.favorites.items);
   const items = useSelector((state) => state.cart.items);
-
 
   const handleOpenDeletePopup = () => {
     setShowDeletePopup(true);
@@ -84,8 +83,12 @@ const CartProductsList = () => {
         </Button>
       </Box>
       {items.map((item) => {
-        const totalOldPrice = (ensureNumber(item.oldPrice) * ensureNumber(item.quantity)).toFixed(2);
-        const totalNewPrice = (ensureNumber(item.newPrice) * ensureNumber(item.quantity)).toFixed(2);
+        const totalOldPrice = (
+          ensureNumber(item.oldPrice) * ensureNumber(item.quantity)
+        ).toFixed(2);
+        const totalNewPrice = (
+          ensureNumber(item.newPrice) * ensureNumber(item.quantity)
+        ).toFixed(2);
         const isFavorite = isItemFavorite(item.code);
 
         return (
@@ -190,6 +193,5 @@ const CartProductsList = () => {
     </Box>
   );
 };
-
 
 export default CartProductsList;

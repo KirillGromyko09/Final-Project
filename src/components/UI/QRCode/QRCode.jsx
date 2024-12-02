@@ -1,4 +1,3 @@
-import React from "react";
 import qrCode from "./../../../assets/svg/qrCode.svg";
 import { Box, IconButton, Typography } from "@mui/material";
 import { styles } from "./style.js";

@@ -1,2 +1,2 @@
-import FavProductsList from './FavProductsList';
+import FavProductsList from "./FavProductsList";
 export default FavProductsList;

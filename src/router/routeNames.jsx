@@ -6,9 +6,6 @@ const routeNames = Object.freeze({
   CategoryPage: "/category/:categoryName",
   ProfilePage: "/profile",
   FavProductsPage: "/fav-products",
-  AddressPage: "/address",
   ConfirmationPage: "/confirmation",
-  DeliveryPage: "/delivery",
-  PaymentPage: "/payment",
 });
 export default routeNames;

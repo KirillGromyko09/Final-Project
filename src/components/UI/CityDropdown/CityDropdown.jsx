@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { styles } from "./styles.js";
 

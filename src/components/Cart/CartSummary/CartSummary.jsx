@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Box, Typography, Button, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -50,9 +49,9 @@ const CartSummary = ({
         </Box>
       </Box>
       <Button
-          variant="contained"
-          sx={styles.checkoutButton}
-          onClick={handleCheckout}
+        variant="contained"
+        sx={styles.checkoutButton}
+        onClick={handleCheckout}
       >
         Перейти до оформлення
       </Button>

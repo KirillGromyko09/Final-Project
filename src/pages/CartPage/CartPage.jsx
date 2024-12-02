@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "@mui/material";
 import BaseTemplate from "../../templates/BaseTemplate";
 import Cart from "../../components/Cart/Cart";
@@ -6,10 +5,10 @@ import Cart from "../../components/Cart/Cart";
 const CartPage = () => {
   return (
     <BaseTemplate
-      className="home-page"
-      showMainHeader={true}
-      showCartHeader={false}
-      showBottomHeader={true}
+      className="cartPage"
+      showMainHeader={false}
+      showCartHeader={true}
+      showBottomHeader={false}
       showTopFooter={true}
       showMainFooter={true}
       showBottomFooter={true}

@@ -1,6 +1,5 @@
 import routerObjects from "./routerObjects.js";
 import { Route, Routes } from "react-router-dom";
-import React from "react";
 
 const routerConfig = () => {
   const routes = () => {

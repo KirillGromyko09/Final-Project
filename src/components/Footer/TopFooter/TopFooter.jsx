@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
@@ -20,7 +19,7 @@ const TopFooter = () => {
               </Typography>
               <Typography variant="body2" sx={styles.text}>
                 Самовивіз із магазину "Comfy", доставка за адресою або у
-                відділення "Нова Пошта" і "Meest"
+                відділення 'Нова Пошта' і "Meest"
               </Typography>
             </Box>
           </Grid>

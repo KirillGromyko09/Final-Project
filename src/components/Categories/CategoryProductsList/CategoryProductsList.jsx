@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetAllProductsByCategoryQuery } from "../../../store/productsApi/productsApi.js";
 import { Box, Typography } from "@mui/material";

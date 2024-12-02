@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 import MainHeader from "../../components/Headers/MainHeader";
@@ -20,8 +19,8 @@ const BaseTemplate = ({
 }) => {
   return (
     <Box className={className} sx={{ width: "100%", padding: 0, margin: 0 }}>
-      {showMainHeader && <MainHeader />}
-      {showCartHeader && <CartHeader />}
+      {showMainHeader && <MainHeader languages={["УКР", "РУС"]} />}
+      {showCartHeader && <CartHeader languages={["УКР", "РУС"]} />}
       {showBottomHeader && <BottomHeader />}
       <Box sx={{ flexGrow: 1 }}>{children}</Box>
       {showTopFooter && <TopFooter />}

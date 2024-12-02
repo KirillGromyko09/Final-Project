@@ -1,2 +1,3 @@
-import CartHeader from "./CartHeader.jsx";
+import CartHeader from "./CartHeader";
+
 export default CartHeader;

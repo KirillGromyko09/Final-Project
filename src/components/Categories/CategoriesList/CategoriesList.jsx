@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetAllCategoriesQuery } from "../../../store/productsApi/productsApi.js";
 import { useNavigate } from "react-router-dom";
 import { Box, Grid2, Paper, Typography } from "@mui/material";

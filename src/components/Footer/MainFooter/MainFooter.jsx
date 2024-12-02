@@ -1,4 +1,3 @@
-import React from "react";
 import { Typography, Link, Box, Grid } from "@mui/material";
 import { styles } from "./style.js";
 import QRCode from "../../UI/QRCode";

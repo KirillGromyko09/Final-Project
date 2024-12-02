@@ -1,4 +1,3 @@
-import React from "react";
 import BaseTemplate from "../../templates/BaseTemplate";
 import ProfileMenu from "../../components/userProfile/ProfileMenu";
 

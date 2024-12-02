@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import { styles } from "./styles.js";
 import { Search } from "@mui/icons-material";

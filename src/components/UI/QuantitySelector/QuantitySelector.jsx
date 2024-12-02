@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { IconButton, Typography, Box } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";

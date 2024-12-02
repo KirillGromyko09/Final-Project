@@ -1,4 +1,3 @@
-import React from "react";
 import BaseTemplate from "../../templates/BaseTemplate";
 import ProductDetail from "../../components/Products/ProductDetail";
 import { Container } from "@mui/material";
@@ -20,7 +19,7 @@ const ProductPage = () => {
 
   return (
     <BaseTemplate
-      className="home-page"
+      className="productPage"
       showMainHeader={true}
       showCartHeader={false}
       showBottomHeader={true}

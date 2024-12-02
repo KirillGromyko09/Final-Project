@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetProductsQuery } from "../../../store/productsApi/productsApi.js";
 import ProductCard from "../../Products/ProductCard";
 import { Box, Button, Typography } from "@mui/material";
